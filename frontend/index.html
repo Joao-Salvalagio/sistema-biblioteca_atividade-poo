@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Biblioteca</h1>
+
+        <section>
+            <h2>Criar Usuário</h2>
+            <label>Nome Completo:</label>
+            <input type="text" id="nomeUsuario" placeholder="Nome completo">
+            <label>CPF/Matrícula:</label>
+            <input type="text" id="documento" placeholder="CPF/Matrícula">
+            <label>Telefone:</label>
+            <input type="text" id="telefone" placeholder="Telefone">
+            <label>Email:</label>
+            <input type="email" id="email" placeholder="Email">
+            <label>Limite de Empréstimos:</label>
+            <input type="number" id="limiteEmprestimos" placeholder="Limite de Empréstimos" value="3">
+            <button onclick="criarUsuario()">Criar Usuário</button>
+        </section>
+
+        <section>
+            <h2>Usuários Cadastrados</h2>
+            <button onclick="listarUsuarios()">Atualizar Lista</button>
+            <div id="listaUsuarios"></div>
+        </section>
+
+        <section>
+            <h2>Criar Item da Biblioteca</h2>
+            <label>Tipo de Item:</label>
+            <select id="tipoItem">
+                <option value="">Selecione o tipo</option>
+                <option value="LIVRO">Livro</option>
+                <option value="PERIODICO">Periódico</option>
+            </select>
+            <label>Título:</label>
+            <input type="text" id="titulo" placeholder="Título">
+            
+            <div id="camposLivro" style="display:none;">
+                <label>Autor:</label>
+                <input type="text" id="autor" placeholder="Autor">
+                <label>Categoria:</label>
+                <input type="text" id="categoria" placeholder="Categoria">
+            </div>
+            
+            <div id="camposPeriodico" style="display:none;">
+                <label>Editora:</label>
+                <input type="text" id="editora" placeholder="Editora">
+                <label>Data de Publicação:</label>
+                <input type="text" id="dataPublicacao" placeholder="Data Publicação (Ex: Jan/2025)">
+            </div>
+            
+            <button onclick="criarItem()">Criar Item</button>
+        </section>
+
+        <section>
+            <h2>Itens da Biblioteca</h2>
+            <button onclick="listarItens()">Todos</button>
+            <button onclick="listarPorTipo('LIVRO')">Livros</button>
+            <button onclick="listarPorTipo('PERIODICO')">Periódicos</button>
+            <button onclick="listarDisponiveis()">Disponíveis</button>
+            <div id="listaItens"></div>
+        </section>
+
+        <section>
+            <h2>Realizar Empréstimo</h2>
+            <label>ID do Usuário:</label>
+            <input type="number" id="usuarioIdEmprestimo" placeholder="ID do Usuário">
+            <label>ID do Item:</label>
+            <input type="number" id="itemIdEmprestimo" placeholder="ID do Item">
+            <label>Dias de Empréstimo:</label>
+            <input type="number" id="diasEmprestimo" placeholder="Dias de Empréstimo" value="7">
+            <button onclick="realizarEmprestimo()">Emprestar</button>
+        </section>
+
+        <section>
+            <h2>Empréstimos</h2>
+            <button onclick="listarEmprestimos()">Todos</button>
+            <button onclick="listarAtivos()">Ativos</button>
+            <button onclick="listarAtrasados()">Atrasados</button>
+            <button onclick="verificarAtrasos()">Verificar Atrasos</button>
+            <div id="listaEmprestimos"></div>
+        </section>
+
+        <section>
+            <h2>Devolver Item</h2>
+            <label>ID do Empréstimo:</label>
+            <input type="number" id="emprestimoIdDevolucao" placeholder="ID do Empréstimo">
+            <button onclick="devolverItem()">Devolver</button>
+        </section>
+
+        <section>
+            <h2>Pagar Multa</h2>
+            <label>ID do Usuário:</label>
+            <input type="number" id="usuarioIdMulta" placeholder="ID do Usuário">
+            <label>Valor a Pagar (R$):</label>
+            <input type="number" id="valorMulta" placeholder="Valor R$" step="0.01">
+            <button onclick="pagarMulta()">Pagar</button>
+        </section>
+
+        <div id="mensagem"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
